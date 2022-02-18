@@ -5,6 +5,7 @@
   width: 24px;
   height: 24px;
   margin-top: 37px;
+  margin-right: 20px;
 }
 
 .button_edit:hover {
@@ -15,7 +16,6 @@
   .button_edit {
     width: 18px;
     height: 18px;
-    margin-top: 32px;
-    margin-left: 10px;
+    margin: 32px 0 0 10px;
   }
 }
