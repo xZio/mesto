@@ -18,12 +18,6 @@
   }
 }
 
-@media screen and (max-width: 540px) {
-  .button_add {
-    width: 60%;
-  }
-}
-
 @media screen and (max-width: 360px) {
   .button_add {
     width: calc(100% - 2 * 19px);

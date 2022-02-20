@@ -5,6 +5,7 @@
   background-image: url(../../../images/likeButton.svg);
   margin-right: 30px;
   margin-left: 15px;
+  padding: 10px;
 }
 
 .button_like:hover {

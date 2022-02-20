@@ -8,6 +8,10 @@
   background-color: transparent;
 }
 
+.button_esc:hover {
+  opacity: 0.6;
+}
+
 @media screen and (max-width: 540px) {
   .button_esc {
     top: -36px;
