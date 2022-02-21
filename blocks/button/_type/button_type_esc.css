@@ -1,4 +1,4 @@
-.button_esc {
+.button_type_esc {
   position: absolute;
   top: -40px;
   right: -40px;
@@ -8,12 +8,12 @@
   background-color: transparent;
 }
 
-.button_esc:hover {
+.button_type_esc:hover {
   opacity: 0.6;
 }
 
 @media screen and (max-width: 540px) {
-  .button_esc {
+  .button_type_esc {
     top: -36px;
     right: 0;
     width: 20px;
