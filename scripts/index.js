@@ -32,18 +32,18 @@ const imagePopup = document.querySelector(".popup_type_image");
 
 //кнопки
 const editButton = document.querySelector(".button_type_edit");
-const escProfileButton = document.querySelector(".popup_type_profile-esc");
-const escCardButton = document.querySelector(".popup_type_card-esc");
-const escImageButon = document.querySelector(".popup_type_image-esc");
+const escProfileButton = document.querySelector(".button_type_profile-esc");
+const escCardButton = document.querySelector(".button_type_card-esc");
+const escImageButon = document.querySelector(".button_type_image-esc");
 const addButton = document.querySelector(".button_type_add");
 
 //форма профиля
-const profileFormElement = document.querySelector(".popup_profile-form");
+const profileFormElement = document.querySelector(".popup__form_type_profile");
 const nameInput = document.getElementById("profile-name");
 const jobInput = document.getElementById("profile-job");
 
 //форма карточки
-const cardFormElement = document.querySelector(".popup_card-form");
+const cardFormElement = document.querySelector(".popup__form_type_card");
 const titleInput = document.getElementById("card-title");
 const srcInput = document.getElementById("card-src");
 
