@@ -34,89 +34,18 @@
           </div>
           <button class="button button_type_add profile__add-button"></button>
         </section>
-        <section class="places">
-          <ul class="places__card-list">
-            <li class="card">
-              <img
-                src="./images/karachaevsk.jpg"
-                alt="Карачаевск"
-                class="card__image"
-              />
-              <div class="card__content">
-                <h2 class="card__name">Карачаевск</h2>
-                <button
-                  class="button button_type_like places__like-button"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/elbrus.jpg"
-                alt="Эльбрус"
-                class="card__image"
-              />
-              <div class="card__content">
-                <h2 class="card__name">Гора Эльбрус</h2>
-                <button
-                  class="button button_type_like places__like-button"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img src="./images/dombay.jpg" alt="Домбай" class="card__image" />
-              <div class="card__content">
-                <h2 class="card__name">Домбай Домбай</h2>
-                <button
-                  class="button button_type_like places__like-button"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/elbrus.jpg"
-                alt="Эльбрус"
-                class="card__image"
-              />
-              <div class="card__content">
-                <h2 class="card__name">Гора Эльбрус</h2>
-                <button
-                  class="button button_type_like places__like-button"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img src="./images/dombay.jpg" alt="Домбай" class="card__image" />
-              <div class="card__content">
-                <h2 class="card__name">Домбай</h2>
-                <button
-                  class="button button_type_like places__like-button"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/karachaevsk.jpg"
-                alt="Карачаевск"
-                class="card__image"
-              />
-              <div class="card__content">
-                <h2 class="card__name">Карачаевск</h2>
-                <button
-                  class="button button_type_like places__like-button"
-                ></button>
-              </div>
-            </li>
-          </ul>
-        </section>
+        <section class="places"></section>
       </main>
       <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Александр Ботанов</p>
       </footer>
-      <section class="popup">
+      <section class="popup popup_type_profile">
         <div class="popup__container">
-          <button class="button button_type_esc"></button>
+          <button
+            class="button button_type_esc popup_type_profile-esc"
+          ></button>
           <h2 class="popup__header">Редактировать профиль</h2>
-          <form class="popup__form" name="profile-form">
+          <form class="popup__form popup_profile-form" name="profile-form">
             <input
               id="profile-name"
               type="text"
@@ -140,7 +69,58 @@
           </form>
         </div>
       </section>
+      <section class="popup popup_type_card">
+        <div class="popup__container">
+          <button class="button button_type_esc popup_type_card-esc"></button>
+          <h2 class="popup__header">Новое место</h2>
+          <form class="popup__form popup_card-form" name="card-form">
+            <input
+              id="card-title"
+              type="text"
+              placeholder="Название"
+              class="popup__input"
+              name="card-place"
+            />
+            <input
+              id="card-src"
+              type="text"
+              placeholder="Ссылка на картинку"
+              class="popup__input"
+              name="card-src"
+            />
+            <button
+              type="submit"
+              class="button button_type_save popup__save-button"
+            >
+              Создать
+            </button>
+          </form>
+        </div>
+      </section>
+      <section class="popup popup_type_image">
+        <div class="popup__container popup__image-container">
+          <button class="button button_type_esc popup_type_image-esc"></button>
+          <img
+            class="popup__image"
+            src=""
+            alt="Увеличенная картинка карточки"
+          />
+          <h2 class="popup__image-title"></h2>
+        </div>
+      </section>
     </div>
+
+    <template id="card">
+      <li class="card">
+        <img src="" alt="" class="card__image" />
+        <div class="card__content">
+          <h2 class="card__name"></h2>
+          <button class="button button_type_like places__like-button"></button>
+          <button class="button button_type_del"></button>
+        </div>
+      </li>
+    </template>
+
     <script src="./scripts/index.js"></script>
   </body>
 </html>
