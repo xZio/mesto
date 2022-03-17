@@ -18,7 +18,6 @@
 @import url(../blocks/button/_type/button_type_del.css);
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__profession/profile__profession.css);
-@import url(../blocks/places/places.css);
 @import url(../blocks/places/__card-list/places__card-list.css);
 @import url(../blocks/places/__like-button/places__like-button.css);
 @import url(../blocks/card/card.css);
