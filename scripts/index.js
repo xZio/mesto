@@ -52,9 +52,13 @@ const profileProfession = document.querySelector(".profile__profession");
 const cardList = document.querySelector(".places__card-list");
 const cardTemplate = document.querySelector("#card").content;
 
+const popupImage = document.querySelector(".popup__image");
+const popupImageTitle = document.querySelector(".popup__image-title");
+
+
 function openImagePopup() {
-  document.querySelector(".popup__image").src = this.src;
-  document.querySelector(".popup__image-title").textContent =
+  popupImage.src = this.src;
+  popupImageTitle.textContent =
     this.closest(".card").querySelector(".card__name").textContent;
   openPopup(imagePopup);
 }
