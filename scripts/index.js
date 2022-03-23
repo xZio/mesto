@@ -55,7 +55,6 @@ const cardTemplate = document.querySelector("#card").content;
 const popupImage = document.querySelector(".popup__image");
 const popupImageTitle = document.querySelector(".popup__image-title");
 
-
 function openImagePopup() {
   popupImage.src = this.src;
   popupImageTitle.textContent =
@@ -126,8 +125,6 @@ function submitCardForm(evt) {
   cardFormElement.reset();
   closePopup(cardPopup);
 }
-
-
 
 //добавляем в список карточки по умолчанию
 initialCards.forEach((card) => {
