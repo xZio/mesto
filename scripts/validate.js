@@ -11,9 +11,6 @@ function enableValidation({
   forms.forEach((form) => {
     form.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      if (form.classList.value.includes("popup__form_type_profile")) {
-        submitProfileForm();
-      } else submitCardForm();
     });
     setEventListeners(
       form,
@@ -72,7 +69,11 @@ function hideInputError(input, errorClass, inputErrorClass) {
 function toggleButtonState(inputs, button, inactiveButtonClass) {
   if (isValidInput(inputs)) {
     button.classList.remove(inactiveButtonClass);
-  } else button.classList.add(inactiveButtonClass);
+    button.removeAttribute("disabled");
+  } else {
+    button.classList.add(inactiveButtonClass);
+    button.setAttribute("disabled", "disabled");
+  }
 }
 
 function isValidInput(inputs) {
