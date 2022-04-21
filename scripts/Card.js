@@ -1,3 +1,10 @@
+import { escImageButon } from "./index.js";
+import { openPopup } from "./index.js";
+import { popupImage } from "./index.js";
+import { popupImageTitle } from "./index.js";
+import { imagePopup } from "./index.js";
+import { closePopup } from "./index.js";
+
 export class Card {
   constructor(data, cardSelector) {
     this._name = data.name;
