@@ -1,9 +1,11 @@
-import { escImageButon } from "./index.js";
-import { openPopup } from "./index.js";
-import { popupImage } from "./index.js";
-import { popupImageTitle } from "./index.js";
-import { imagePopup } from "./index.js";
-import { closePopup } from "./index.js";
+import {
+  escImageButon,
+  openPopup,
+  popupImage,
+  popupImageTitle,
+  imagePopup,
+  closePopup,
+} from "./utils.js";
 
 export class Card {
   constructor(data, cardSelector) {
@@ -35,6 +37,7 @@ export class Card {
 
   _deleteCard() {
     this._element.remove();
+    this._element = null;
   }
 
   _toggleLikeButton() {
