@@ -1,17 +1,9 @@
-import {
-  escImageButon,
-  openPopup,
-  popupImage,
-  popupImageTitle,
-  imagePopup,
-  closePopup,
-} from "./utils.js";
-
 export class Card {
-  constructor(data, cardSelector) {
+  constructor({ data, handleCardClick }, cardSelector) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -46,12 +38,6 @@ export class Card {
       .classList.toggle("button_type_like_active");
   }
 
-  _openImagePopup() {
-    popupImage.src = this._link;
-    popupImageTitle.textContent = this._name;
-    openPopup(imagePopup);
-  }
-
   _setEventListeners() {
     this._element
       .querySelector(".button_type_del")
@@ -66,10 +52,7 @@ export class Card {
     this._element
       .querySelector(".card__image")
       .addEventListener("click", () => {
-        this._openImagePopup();
+        this._handleCardClick();
       });
-    escImageButon.addEventListener("click", () => {
-      closePopup(imagePopup);
-    });
   }
 }
