@@ -6,6 +6,8 @@ import { PopupWithImage } from "../components/popupWithImage.js";
 import { PopupWithForm } from "../components/popupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 
+import '../pages/index.css'
+
 //кнопки
 const editButton = document.querySelector(".button_type_edit");
 const addButton = document.querySelector(".button_type_add");
