@@ -6,7 +6,7 @@ import { PopupWithImage } from "../components/popupWithImage.js";
 import { PopupWithForm } from "../components/popupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 
-import '../pages/index.css'
+import "../pages/index.css";
 
 //кнопки
 const editButton = document.querySelector(".button_type_edit");
@@ -21,22 +21,26 @@ const jobInput = document.getElementById("profile-job");
 const cardFormElement = document.querySelector(".popup__form_type_card");
 
 const profileValidation = new FormValidator(validationData, profileFormElement);
+profileValidation.enableValidation();
+
 const cardValidation = new FormValidator(validationData, cardFormElement);
+cardValidation.enableValidation();
+
 const imagePopup = new PopupWithImage(".popup_type_image");
+imagePopup.setEventListeners();
 
 function createCard(item) {
   const cardItem = new Card(
     {
       data: item,
       handleCardClick: () => {
-        imagePopup.setEventListeners();
         imagePopup.open(item.name, item.link);
       },
     },
     "#card"
   );
   const card = cardItem.createCard();
-  cardValidation.enableValidation();
+
   return card;
 }
 
@@ -59,7 +63,9 @@ const cardPopup = new PopupWithForm(".popup_type_card", (inputsValue) => {
       link: inputsValue["card-src"],
     })
   );
+  cardPopup.close();
 });
+cardPopup.setEventListeners();
 
 const userInfo = new UserInfo({
   userNameSelector: ".profile__name",
@@ -71,12 +77,14 @@ const profilePopup = new PopupWithForm(".popup_type_profile", (inputsValue) => {
     name: inputsValue["profile-name"],
     job: inputsValue["profile-job"],
   });
+  profilePopup.close();
 });
+profilePopup.setEventListeners();
 
 cardSection.renderItems();
 
 addButton.addEventListener("click", function () {
-  cardPopup.setEventListeners();
+  cardValidation.toggleButtonState();
   cardPopup.open();
 });
 
@@ -85,7 +93,5 @@ editButton.addEventListener("click", function () {
 
   nameInput.value = userContent.name;
   jobInput.value = userContent.job;
-  profilePopup.setEventListeners();
-  profileValidation.enableValidation();
   profilePopup.open();
 });
