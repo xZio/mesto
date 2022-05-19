@@ -51,15 +51,51 @@ const userInfo = new UserInfo({
   userAvatarSelector: ".profile__avatar",
 });
 
-api
-  .getUserInfo()
-  .then((data) => {
+function createCard(item) {
+  const cardItem = new Card(
+    {
+      data: item,
+      currentUserId: userInfo._userId,
+      handleCardClick: () => {
+        imagePopup.open(item.name, item.link);
+      },
+      handleLikeClick: (cardId, isLiked) => {
+        return api.likeCard(cardId, isLiked);
+      },
+      handleDeleteIconClick: () => {
+        confirmPopup.open();
+        confirmPopup.card = cardItem;
+      },
+    },
+    "#card"
+  );
+  const card = cardItem.createCard();
+  return card;
+}
+
+let cardSection = {};
+
+Promise.all([api.getUserInfo(), api.getCards()])
+  .then(([userData, cards]) => {
     userInfo.setUserInfo({
-      name: data.name,
-      job: data.about,
+      name: userData.name,
+      job: userData.about,
     });
-    userInfo.setUserAvatar({ src: data.avatar });
-    userInfo.setUserId(data._id);
+    userInfo.setUserAvatar({ src: userData.avatar });
+    userInfo.setUserId(userData._id);
+
+    cardSection = new Section(
+      {
+        items: cards,
+        renderer: (item) => {
+          const card = createCard(item);
+
+          cardSection.addItem(card);
+        },
+      },
+      ".places__card-list"
+    );
+    cardSection.renderItems();
   })
   .catch((err) => {
     console.log(err);
@@ -72,15 +108,17 @@ const profilePopup = new PopupWithForm(".popup_type_profile", (info) => {
       name: info["profile-name"],
       about: info["profile-job"],
     })
-    .then((data) =>
+    .then((data) => {
       userInfo.setUserInfo({
         name: data.name,
         job: data.about,
-      })
-    )
+      });
+      profilePopup.close();
+    })
     .catch((err) => console.log(err))
-    .finally(() => profilePopup.renderLoading(false));
-  profilePopup.close();
+    .finally(() => {
+      profilePopup.renderLoading(false);
+    });
 });
 profilePopup.setEventListeners();
 
@@ -133,49 +171,6 @@ const avatarPopup = new PopupWithForm(".popup_type_avatar", (url) => {
 });
 avatarPopup.setEventListeners();
 
-const cardsInfo = api.getCards();
-let cardSection = {};
-cardsInfo
-  .then((data) => {
-    cardSection = new Section(
-      {
-        items: data,
-        renderer: (item) => {
-          const card = createCard(item);
-
-          cardSection.addItem(card);
-        },
-      },
-      ".places__card-list"
-    );
-    cardSection.renderItems();
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-function createCard(item) {
-  const cardItem = new Card(
-    {
-      data: item,
-      currentUserId: userInfo._userId,
-      handleCardClick: () => {
-        imagePopup.open(item.name, item.link);
-      },
-      handleLikeClick: (cardId, isLiked) => {
-        return api.likeCard(cardId, isLiked);
-      },
-      handleDeleteIconClick: () => {
-        confirmPopup.open();
-        confirmPopup.card = cardItem;
-      },
-    },
-    "#card"
-  );
-  const card = cardItem.createCard();
-  return card;
-}
-
 addButton.addEventListener("click", function () {
   cardValidation.resetErrors();
   cardValidation.toggleButtonState();
@@ -184,13 +179,15 @@ addButton.addEventListener("click", function () {
 
 editButton.addEventListener("click", function () {
   const userContent = userInfo.getUserInfo();
-
+  profileValidation.resetErrors();
   nameInput.value = userContent.name;
   jobInput.value = userContent.job;
   profilePopup.open();
+  profileValidation.toggleButtonState();
 });
 
 avatarButton.addEventListener("click", function () {
   avatarPopup.open();
   avatarValidation.toggleButtonState();
+  avatarValidation.resetErrors();
 });
